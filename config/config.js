@@ -1,20 +1,25 @@
 require('dotenv').config();
-const mysql = require("mysql2");
+const mysql = require("mysql2/promise");
 
-const connection = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_DATABASE
-})
+async function connect() {
+  try {
+    const connection = await mysql.createConnection({
+        host: process.env.DB_HOST,
+        user: process.env.DB_USER,
+        password: process.env.DB_PASS,
+        database: process.env.DB_DATABASE
+    });
 
-connection.connect((err) => {
-    if(err) {
-        console.log('Erro ao conectar com o banco', err)
-        return
-    }
+    console.log("✅ Conexão bem-sucedida com o banco de dados!");
 
-    console.log('Conectado com o banco de dados')
-})
+    // Você pode fazer uma query de teste, se quiser:
+    const [rows] = await connection.query("SELECT 1 + 1 AS resultado");
+    console.log("Teste de query:", rows[0]);
 
-module.exports = connection;
+    await connection.end(); // Fechar conexão após uso
+  } catch (err) {
+    console.error("❌ Erro ao conectar com o banco de dados:", err.message);
+  }
+}
+
+connect();

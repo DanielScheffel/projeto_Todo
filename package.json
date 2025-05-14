@@ -1,0 +1,19 @@
+{
+  "name": "projeto-to-do",
+  "version": "1.0.0",
+  "description": "Um sistema de gerenciamento de tarefas com autenticação de usuários. Cada usuário pode cadastrar, visualizar, concluir e excluir suas próprias tarefas.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daniel Scheffel",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1",
+    "nodemon": "^3.1.10"
+  }
+}

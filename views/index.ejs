@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToDoList</title>
-</head>
-<body>
-    <h1>Olá, <%= nome %></h1>
-    <p>Meu front está funcionando</p>
-</body>
-</html>
+<%- include('partials/header') %>
+
+<!-- Conteúdo principal da página -->
+<h2>Lista de Tarefas</h2>
+<form action="/add" method="POST">
+  <input type="text" name="description" placeholder="Digite uma tarefa" required>
+  <button type="submit">Adicionar</button>
+</form>
+
+<%- include('partials/footer') %>
